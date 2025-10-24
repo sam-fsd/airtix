@@ -1,0 +1,33 @@
+# Dependency management
+/vendor/
+/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts and temporary files
+/public/build/
+/storage/
+/bootstrap/cache/
+*.log
+*.sqlite
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDE and OS specific files
+.idea/
+.vscode/
+nbproject/
+*.sublime-project
+*.sublime-workspace
+
+# Composer specific files
+composer.lock
+
+# PHP-specific files and directories
+/var/
+/tmp/
