@@ -31,3 +31,8 @@ composer.lock
 # PHP-specific files and directories
 /var/
 /tmp/
+
+.prettiercache
+.prettierrc
+
+package*.json
