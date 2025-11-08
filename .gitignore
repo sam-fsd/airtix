@@ -33,6 +33,5 @@ composer.lock
 /tmp/
 
 .prettiercache
-.prettierrc
 
 package*.json
