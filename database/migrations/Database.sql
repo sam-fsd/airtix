@@ -10,9 +10,9 @@ CREATE TABLE users (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     phone VARCHAR(20),
-    -- date_of_birth DATE,
-    -- profile_photo VARCHAR(255),
-    -- is_admin BOOLEAN DEFAULT FALSE,
+    date_of_birth DATE,
+    profile_photo VARCHAR(255),
+    is_admin BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_email (email)
