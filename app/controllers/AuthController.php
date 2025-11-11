@@ -24,14 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($userId) {
             $_SESSION['success'] = 'Registration successful!';
-            header('Location: login.php');
+            header('Location: ../../public/login.php');
             exit();
         } else {
-            $errors[] = 'Registration failed. Please try again.';
+            $_SESSION['errors'] = ['Registration failed. Please try again.'];
         }
+    } else {
+        $_SESSION['errors'] = $errors;
     }
 }
 
-require_once __DIR__ . '/../../public/register.php';
+header('Location: ../../public/register.php');
 
 ?>
