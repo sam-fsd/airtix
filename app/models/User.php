@@ -60,6 +60,259 @@ class User
         return $stmt->fetch() !== false;
     }
 
+    // ==================== READ ====================
+
+    /**
+     * Find user by ID
+     *
+     * @param int $id User ID
+     * @return array|false User data or false if not found
+     */
+    public function findById($id)
+    {
+        $sql = 'SELECT * FROM users WHERE user_id = ?';
+        $stmt = $this->db->query($sql, [$id]);
+        return $stmt->fetch();
+    }
+
+    /**
+     * Find user by email
+     *
+     * @param string $email User email
+     * @return array|false User data or false if not found
+     */
+    public function findByEmail($email)
+    {
+        $sql = 'SELECT * FROM users WHERE email = ?';
+        $stmt = $this->db->query($sql, [$email]);
+        return $stmt->fetch();
+    }
+
+    /**
+     * Get all users
+     *
+     * @param int $limit Number of users to return (optional)
+     * @param int $offset Starting point (for pagination)
+     * @return array Array of users
+     */
+    public function getAll($limit = null, $offset = 0)
+    {
+        $sql = "SELECT user_id, email, first_name, last_name, phone, 
+                       date_of_birth, profile_photo, is_admin, created_at 
+                FROM users 
+                ORDER BY created_at DESC";
+
+        if ($limit) {
+            $sql .= ' LIMIT ? OFFSET ?';
+            $stmt = $this->db->query($sql, [$limit, $offset]);
+        } else {
+            $stmt = $this->db->query($sql);
+        }
+
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Get total count of users
+     *
+     * @return int Total number of users
+     */
+    public function count()
+    {
+        $sql = 'SELECT COUNT(*) as total FROM users';
+        $stmt = $this->db->query($sql);
+        $result = $stmt->fetch();
+        return $result['total'];
+    }
+
+    /**
+     * Search users by name or email
+     *
+     * @param string $searchTerm Search keyword
+     * @return array Array of matching users
+     */
+    public function search($searchTerm)
+    {
+        $searchTerm = "%{$searchTerm}%";
+
+        $sql = "SELECT user_id, email, first_name, last_name, phone, created_at 
+                FROM users 
+                WHERE first_name LIKE ? 
+                   OR last_name LIKE ? 
+                   OR email LIKE ?
+                ORDER BY first_name ASC";
+
+        $stmt = $this->db->query($sql, [$searchTerm, $searchTerm, $searchTerm]);
+        return $stmt->fetchAll();
+    }
+
+    // ==================== UPDATE ====================
+
+    /**
+     * Update user information
+     *
+     * @param int $id User ID
+     * @param array $data Data to update
+     * @return bool Success status
+     */
+    public function update($id, $data)
+    {
+        try {
+            $sql = "UPDATE users SET 
+                    first_name = ?,
+                    last_name = ?,
+                    phone = ?,
+                    date_of_birth = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                    WHERE user_id = ?";
+
+            $stmt = $this->db->query($sql, [
+                $data['first_name'],
+                $data['last_name'],
+                $data['phone'] ?? null,
+                $data['date_of_birth'] ?? null,
+                $id,
+            ]);
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('User update failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Update user email
+     *
+     * @param int $id User ID
+     * @param string $newEmail New email address
+     * @return bool Success status
+     */
+    public function updateEmail($id, $newEmail)
+    {
+        try {
+            // Check if email already exists
+            if ($this->emailExists($newEmail, $id)) {
+                return false;
+            }
+
+            $sql = "UPDATE users SET email = ?, updated_at = CURRENT_TIMESTAMP 
+                    WHERE user_id = ?";
+            $stmt = $this->db->query($sql, [$newEmail, $id]);
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('Email update failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Update user password
+     *
+     * @param int $id User ID
+     * @param string $newPassword New password (plain text, will be hashed)
+     * @return bool Success status
+     */
+    public function updatePassword($id, $newPassword)
+    {
+        try {
+            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $sql = "UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP 
+                    WHERE user_id = ?";
+            $stmt = $this->db->query($sql, [$hashedPassword, $id]);
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('Password update failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Update profile photo
+     *
+     * @param int $id User ID
+     * @param string $photoPath Path to profile photo
+     * @return bool Success status
+     */
+    public function updateProfilePhoto($id, $photoPath)
+    {
+        try {
+            $sql = "UPDATE users SET profile_photo = ?, updated_at = CURRENT_TIMESTAMP 
+                    WHERE user_id = ?";
+            $stmt = $this->db->query($sql, [$photoPath, $id]);
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('Profile photo update failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    // ==================== DELETE ====================
+
+    /**
+     * Delete user (soft delete - could be implemented)
+     *
+     * @param int $id User ID
+     * @return bool Success status
+     */
+    public function delete($id)
+    {
+        try {
+            // Note: In production, you might want soft delete instead
+            // (adding a deleted_at column instead of actually deleting)
+
+            $sql = 'DELETE FROM users WHERE user_id = ?';
+            $stmt = $this->db->query($sql, [$id]);
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log('User deletion failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    // ==================== AUTHENTICATION ====================
+
+    /**
+     * Authenticate user with email and password
+     *
+     * @param string $email User email
+     * @param string $password Plain text password
+     * @return array|false User data if authenticated, false otherwise
+     */
+    public function authenticate($email, $password)
+    {
+        $user = $this->findByEmail($email);
+
+        if (!$user) {
+            return false;
+        }
+
+        if (password_verify($password, $user['password'])) {
+            // Remove password from returned data
+            unset($user['password']);
+            return $user;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if user is admin
+     *
+     * @param int $id User ID
+     * @return bool True if admin, false otherwise
+     */
+    public function isAdmin($id)
+    {
+        $user = $this->findById($id);
+        return $user && $user['is_admin'] == 1;
+    }
+
     public function validate($data, $isUpdate = false)
     {
         $errors = [];
