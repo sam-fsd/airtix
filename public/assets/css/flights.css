@@ -1,0 +1,156 @@
+/* flights.css — page specific styles for search page */
+
+/* layout helpers */
+.page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* hero */
+.hero {
+    background: linear-gradient(180deg, #f6fbff 0%, #eef7fb 100%);
+    padding: 2.2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero h1 {
+    font-size: 2rem;
+    color: #063c3c;
+    margin-bottom: 0.25rem;
+}
+.hero p {
+    color: #3b6363;
+}
+
+/* search form */
+.search-form-section {
+    margin-top: 1.5rem;
+}
+.flight-search-form .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    align-items: end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: #144a4a;
+}
+.form-group input[type='text'],
+.form-group input[type='date'],
+.form-group input[type='number'],
+.form-group select {
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #d7e6e6;
+    background: #fff;
+    font-size: 0.95rem;
+}
+
+/* submit */
+.form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-primary {
+    background: #0b7b7b;
+    color: #fff;
+    border: 0;
+    font-weight: 700;
+}
+.btn-secondary {
+    background: #e6f6f6;
+    color: #0b7b7b;
+    border: 1px solid rgba(11, 123, 123, 0.12);
+}
+
+/* advanced filters (details) */
+.advanced-filters {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fbffff;
+    border-radius: 8px;
+    border: 1px solid #eef6f6;
+}
+.advanced-filters summary {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .flight-search-form .row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form-submit {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 520px) {
+    .flight-search-form .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* popular routes */
+.popular-routes {
+    margin-top: 2rem;
+}
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+.route-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #edf8f8;
+}
+.route-card h3 {
+    margin-bottom: 0.5rem;
+    color: #0b7b7b;
+}
+.route-card .price {
+    font-weight: 700;
+    color: #066a66;
+    margin-bottom: 0.5rem;
+}
+.route-card .bookings {
+    color: #6b8b8b;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+/* fallback alert */
+.alert {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.alert-error {
+    background: #fff6f6;
+    border: 1px solid #ffd6d6;
+    color: #7a1f1f;
+}

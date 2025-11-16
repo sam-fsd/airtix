@@ -1,0 +1,153 @@
+/* results page */
+
+.results-page .page-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem;
+}
+
+/* summary */
+.search-summary {
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+}
+.search-summary h1 {
+    margin-bottom: 0.3rem;
+    color: #063c3c;
+    font-size: 1.9rem;
+}
+.search-summary .summary-meta {
+    color: #426d6d;
+    margin-bottom: 1rem;
+}
+
+/* results header */
+.results-header {
+    margin: 1rem 0;
+}
+.results-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0b7b7b;
+}
+
+/* flights list */
+.flights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.flight-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid #eaf5f5;
+}
+.flight-card.sold-out {
+    opacity: 0.6;
+}
+
+/* main layout */
+.flight-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* times */
+.flight-times {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.time-block {
+    text-align: center;
+}
+.time-block .time {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.airport {
+    font-size: 0.9rem;
+    color: #678;
+}
+
+/* duration separator */
+.duration {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #678;
+}
+.flight-line {
+    width: 60px;
+    height: 2px;
+    margin: 4px auto 0;
+    background: #0b7b7b;
+    border-radius: 2px;
+}
+
+/* info */
+.flight-info {
+    font-size: 0.9rem;
+}
+.flight-info p {
+    margin: 0.2rem 0;
+}
+.flight-number {
+    font-weight: 600;
+    color: #0b7b7b;
+}
+.aircraft {
+    color: #466;
+}
+.seats {
+    font-size: 0.85rem;
+    color: #466;
+}
+
+/* price */
+.flight-price {
+    text-align: right;
+}
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #063c3c;
+}
+.per-person {
+    color: #678;
+    font-size: 0.85rem;
+}
+
+/* actions */
+.flight-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* no results */
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #eaf5f5;
+    border-radius: 10px;
+}
+.no-results h2 {
+    margin-bottom: 0.5rem;
+    color: #063c3c;
+}
+
+/* responsive */
+@media (max-width: 800px) {
+    .flight-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .flight-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}

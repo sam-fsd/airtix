@@ -1,0 +1,197 @@
+:root {
+    --primary: #005d5d;
+    --accent: #018b8b;
+    --light: #f5f6fa;
+    --text: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: var(--light);
+    color: var(--text);
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar .logo img {
+    width: 32px;
+    height: 32px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.sidebar nav li {
+    margin: 1rem 0;
+    padding: 0.6rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.sidebar nav li.active,
+.sidebar nav li:hover {
+    background: var(--accent);
+}
+
+.sidebar-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sidebar-footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.6rem;
+}
+
+/* Main content */
+.content {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    background: #fff;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('../images/plane-clouds.png') center/cover;
+    border-radius: 12px;
+    color: #fff;
+    padding: 1.5rem;
+    min-height: 150px;
+}
+
+.weather {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+}
+
+.weather-temp span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.upcoming-flight {
+    margin: 1.5rem 0;
+}
+
+.flight-banner {
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-change {
+    background: white;
+    color: var(--accent);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Sections */
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.recent-flights,
+.destination-facts {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+}
+
+.recent-flights ul {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.recent-flights li {
+    margin: 0.3rem 0;
+    padding-left: 0.3rem;
+}
+
+.btn-view {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.destination-facts img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.destination-facts ul {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
