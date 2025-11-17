@@ -10,6 +10,7 @@
 
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../models/Flight.php';
+require_once __DIR__ . '/../helpers/functions.php';
 
 session_start();
 
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
         $_SESSION['old_input'] = $_GET; // Preserve user input
-        header('Location: ../../public/flights/index.php');
+        redirect('public/flights/search.php');
         exit();
     }
 
@@ -109,6 +110,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 // If not GET request, redirect to search page
-header('Location: ../../public/flights/index.php');
-exit();
+redirect('public/flights/search.php');
 ?>

@@ -32,6 +32,9 @@ unset($_SESSION['success'], $_SESSION['errors']);
     <meta charset="utf-8">
     <title>Flight Results - AirTix</title>
 
+    <!-- global shared styles -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/styles.css">
+    
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/dashboard.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/assets/css/results.css">
 </head>
@@ -165,7 +168,7 @@ unset($_SESSION['success'], $_SESSION['errors']);
                                     <!-- Actions -->
                                     <div class="flight-actions">
                                         <a class="btn btn-secondary"
-                                           href="<?= BASE_URL ?>flights/details.php?id=<?= $flight[
+                                           href="<?= BASE_URL ?>/public/flights/flight_detail.php?id=<?= $flight[
     'flight_id'
 ] ?>">
                                             Details

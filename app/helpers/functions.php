@@ -119,7 +119,7 @@ function requireLogin()
 {
     if (!isLoggedIn()) {
         setFlash('error', 'Please login to continue');
-        redirect('auth/login.php');
+        redirect('public/login.php');
     }
 }
 
