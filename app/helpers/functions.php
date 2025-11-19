@@ -1,6 +1,6 @@
 <?php
 
-define('SITE_URL', 'localhost/airtix');
+require_once __DIR__ . '/../../config/config.php';
 
 /**
  * Sanitize user input
@@ -31,7 +31,7 @@ function isAdmin()
  */
 function redirect($page)
 {
-    header('Location: ' . SITE_URL . '/' . $page);
+    header('Location: ' . BASE_URL . '/' . ltrim($page, '/'));
     exit();
 }
 
