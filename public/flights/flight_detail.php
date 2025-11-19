@@ -6,14 +6,14 @@ session_start();
 
 $flightId = $_GET['id'] ?? null;
 if (!$flightId) {
-    redirect('flights/search.php');
+    redirect('public/flights/search.php');
 }
 
 $flightModel = new Flight();
 $flight = $flightModel->findById($flightId);
 
 if (!$flight) {
-    redirect('flights/search.php');
+    redirect('public/flights/search.php');
 }
 
 $stats = $flightModel->getStatistics($flightId);
@@ -117,7 +117,7 @@ $duration = ($arrival - $departure) / 3600;
 
                 <?php if ($flight['available_seats'] > 0 && $flight['status'] === 'scheduled'): ?>
 
-                    <form action="../booking/select-seats.php" method="GET">
+                    <form action="../booking/seat_selection.php" method="GET">
                         <input type="hidden" name="flight_id" value="<?= $flight['flight_id'] ?>">
 
                         <label for="passengers">Passengers:</label>
@@ -150,6 +150,5 @@ $duration = ($arrival - $departure) / 3600;
 </main>
 </div>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

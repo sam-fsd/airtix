@@ -176,7 +176,7 @@ unset($_SESSION['success'], $_SESSION['errors']);
     
                                         <?php if ($canBook): ?>
                                             <a class="btn btn-primary"
-                                               href="<?= BASE_URL ?>booking/select-seats.php?flight_id=<?= $flight[
+                                               href="<?= BASE_URL ?>/public/booking/seat_selection.php?flight_id=<?= $flight[
     'flight_id'
 ] ?>&passengers=<?= $passengers ?>">
                                                 Book Now

@@ -1,0 +1,100 @@
+/* Center container inside the main content area */
+.confirmation-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.confirmation-container {
+    text-align: center;
+}
+
+/* Success Icon */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #2ecc71;
+    color: #fff;
+    font-size: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+}
+
+/* Headings */
+.confirmation-container h1 {
+    margin-bottom: 0.6rem;
+}
+
+.subtitle {
+    color: #6b7b7b;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Reference Number */
+.booking-ref {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.9rem 1.3rem;
+    display: inline-block;
+    font-size: 1.15rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* Details box */
+.confirmation-details {
+    background: #ffffff;
+    padding: 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    text-align: left;
+}
+
+.info-label {
+    color: #6b7b7b;
+    font-size: 0.85rem;
+}
+
+.info-value.big {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.email-note {
+    margin-top: 1.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #e3eaea;
+    text-align: left;
+    color: #6b7b7b;
+}
+
+/* Buttons */
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
