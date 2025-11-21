@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-   <?php include_once __DIR__ . '/_sidebar.php'; ?>
+   <?php include_once __DIR__ . '/../includes/_sidebar.php'; ?>
     <!-- Main content -->
     <main class="content">
       <section class="header">

@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../app/helpers/functions.php';
 
 session_start();
 
-// requireLogin();
+requireLogin();
 
 $flightId = $_GET['flight_id'] ?? null;
 $passengers = $_GET['passengers'] ?? 1;

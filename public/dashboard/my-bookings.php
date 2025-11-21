@@ -37,26 +37,35 @@ unset($_SESSION['errors']);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>My Bookings - AirTix</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/booking.css">
 </head>
 <body>
-    <?php include __DIR__ . '/_sidebar.php'; ?>
-    
+    <?php include __DIR__ . '/../includes/_sidebar.php'; ?>
+
+    <div class="content">
     <main class="dashboard-page">
-        <div class="container">
+        <div class="page-container">
+
             <div class="dashboard-header">
-                <h1>My Bookings</h1>
-                <a href="../flights/index.php" class="btn btn-primary">Book New Flight</a>
+                <div>
+                    <h1>My Bookings</h1>
+                    <p class="muted">Manage upcoming trips, view tickets and past travels.</p>
+                </div>
+
+                <div>
+                    <a href="../flights/search.php" class="btn btn-primary">Book New Flight</a>
+                </div>
             </div>
-            
+
             <?php if ($success): ?>
                 <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
             <?php endif; ?>
-            
+
             <?php if (!empty($errors)): ?>
                 <div class="alert alert-error">
                     <ul>
@@ -66,29 +75,29 @@ unset($_SESSION['errors']);
                     </ul>
                 </div>
             <?php endif; ?>
-            
+
             <!-- Stats Cards -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-value"><?= $stats['total_bookings'] ?></div>
                     <div class="stat-label">Total Bookings</div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-value"><?= count($upcomingBookings) ?></div>
                     <div class="stat-label">Upcoming Trips</div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-value">KES <?= number_format($stats['total_spent'], 2) ?></div>
                     <div class="stat-label">Total Spent</div>
                 </div>
             </div>
-            
+
             <!-- Upcoming Bookings -->
             <section class="bookings-section">
                 <h2>Upcoming Trips</h2>
-                
+
                 <?php if (empty($upcomingBookings)): ?>
                     <div class="empty-state">
                         <p>No upcoming bookings</p>
@@ -104,41 +113,42 @@ unset($_SESSION['errors']);
                                 (strtotime($booking['departure_time']) - time()) / 86400,
                             );
                             ?>
-                            
-                            <div class="booking-card">
-                                <div class="booking-header">
-                                    <span class="booking-ref"><?= htmlspecialchars(
-                                        $booking['booking_reference'],
-                                    ) ?></span>
-                                    <span class="booking-status status-<?= $booking[
-                                        'booking_status'
-                                    ] ?>">
-                                        <?= ucfirst($booking['booking_status']) ?>
-                                    </span>
-                                </div>
-                                
-                                <div class="booking-route">
-                                    <div class="route-info">
-                                        <div class="city"><?= htmlspecialchars(
-                                            $booking['origin_city'],
-                                        ) ?></div>
-                                        <div class="code"><?= htmlspecialchars(
-                                            $booking['origin_code'],
-                                        ) ?></div>
+                            <article class="booking-card">
+                                <header class="booking-header">
+                                    <div>
+                                        <span class="booking-ref"><?= htmlspecialchars(
+                                            $booking['booking_reference'],
+                                        ) ?></span>
+                                        <div class="booking-route">
+                                            <div class="route-left">
+                                                <div class="city"><?= htmlspecialchars(
+                                                    $booking['origin_city'],
+                                                ) ?></div>
+                                                <div class="code"><?= htmlspecialchars(
+                                                    $booking['origin_code'],
+                                                ) ?></div>
+                                            </div>
+                                            <div class="route-arrow">→</div>
+                                            <div class="route-right">
+                                                <div class="city"><?= htmlspecialchars(
+                                                    $booking['destination_city'],
+                                                ) ?></div>
+                                                <div class="code"><?= htmlspecialchars(
+                                                    $booking['destination_code'],
+                                                ) ?></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="route-arrow">→</div>
-                                    
-                                    <div class="route-info">
-                                        <div class="city"><?= htmlspecialchars(
-                                            $booking['destination_city'],
-                                        ) ?></div>
-                                        <div class="code"><?= htmlspecialchars(
-                                            $booking['destination_code'],
-                                        ) ?></div>
+
+                                    <div class="booking-status-wrap">
+                                        <span class="booking-status status-<?= $booking[
+                                            'booking_status'
+                                        ] ?>">
+                                            <?= ucfirst($booking['booking_status']) ?>
+                                        </span>
                                     </div>
-                                </div>
-                                
+                                </header>
+
                                 <div class="booking-details">
                                     <div class="detail-item">
                                         <span class="label">Flight</span>
@@ -146,7 +156,7 @@ unset($_SESSION['errors']);
                                             $booking['flight_number'],
                                         ) ?></span>
                                     </div>
-                                    
+
                                     <div class="detail-item">
                                         <span class="label">Date</span>
                                         <span class="value"><?= date(
@@ -154,7 +164,7 @@ unset($_SESSION['errors']);
                                             strtotime($booking['departure_time']),
                                         ) ?></span>
                                     </div>
-                                    
+
                                     <div class="detail-item">
                                         <span class="label">Time</span>
                                         <span class="value"><?= date(
@@ -162,87 +172,81 @@ unset($_SESSION['errors']);
                                             strtotime($booking['departure_time']),
                                         ) ?></span>
                                     </div>
-                                    
+
                                     <div class="detail-item">
                                         <span class="label">Passengers</span>
                                         <span class="value"><?= $passengerCount ?></span>
                                     </div>
                                 </div>
-                                
+
                                 <?php if ($daysUntil <= 7): ?>
-                                    <div class="booking-alert">
-                                        ⏰ Departing in <?= $daysUntil ?> day<?= $daysUntil != 1
+                                    <div class="booking-alert">⏰ Departing in <?= $daysUntil ?> day<?= $daysUntil !=
+ 1
      ? 's'
-     : '' ?>
-                                    </div>
+     : '' ?></div>
                                 <?php endif; ?>
-                                
+
                                 <div class="booking-actions">
                                     <a href="../tickets/view.php?booking_id=<?= $booking[
                                         'booking_id'
-                                    ] ?>" 
-                                       class="btn btn-primary btn-sm">
-                                        View Tickets
-                                    </a>
-                                    
+                                    ] ?>" class="btn btn-primary btn-sm">View Tickets</a>
+
                                     <?php if ($daysUntil > 2): ?>
-                                        <button onclick="cancelBooking(<?= $booking[
+                                        <button type="button" class="btn btn-secondary btn-sm" onclick="openCancelModal(<?= $booking[
                                             'booking_id'
                                         ] ?>, '<?= htmlspecialchars(
     $booking['booking_reference'],
-) ?>')" 
-                                                class="btn btn-secondary btn-sm">
-                                            Cancel Booking
-                                        </button>
+) ?>')">Cancel Booking</button>
                                     <?php endif; ?>
                                 </div>
-                            </div>
+                            </article>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
             </section>
-            
+
             <!-- Past Bookings -->
             <?php if (!empty($pastBookings)): ?>
                 <section class="bookings-section">
                     <h2>Past Trips</h2>
-                    
+
                     <div class="bookings-grid">
                         <?php foreach ($pastBookings as $booking): ?>
                             <?php $tickets = $ticketModel->getTicketsByBookingId(
                                 $booking['booking_id'],
                             ); ?>
-                            
-                            <div class="booking-card past">
-                                <div class="booking-header">
-                                    <span class="booking-ref"><?= htmlspecialchars(
-                                        $booking['booking_reference'],
-                                    ) ?></span>
-                                    <span class="past-label">Completed</span>
-                                </div>
-                                
-                                <div class="booking-route">
-                                    <div class="route-info">
-                                        <div class="city"><?= htmlspecialchars(
-                                            $booking['origin_city'],
-                                        ) ?></div>
-                                        <div class="code"><?= htmlspecialchars(
-                                            $booking['origin_code'],
-                                        ) ?></div>
+                            <article class="booking-card past">
+                                <header class="booking-header">
+                                    <div>
+                                        <span class="booking-ref"><?= htmlspecialchars(
+                                            $booking['booking_reference'],
+                                        ) ?></span>
+                                        <div class="booking-route">
+                                            <div class="route-left">
+                                                <div class="city"><?= htmlspecialchars(
+                                                    $booking['origin_city'],
+                                                ) ?></div>
+                                                <div class="code"><?= htmlspecialchars(
+                                                    $booking['origin_code'],
+                                                ) ?></div>
+                                            </div>
+                                            <div class="route-arrow">→</div>
+                                            <div class="route-right">
+                                                <div class="city"><?= htmlspecialchars(
+                                                    $booking['destination_city'],
+                                                ) ?></div>
+                                                <div class="code"><?= htmlspecialchars(
+                                                    $booking['destination_code'],
+                                                ) ?></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="route-arrow">→</div>
-                                    
-                                    <div class="route-info">
-                                        <div class="city"><?= htmlspecialchars(
-                                            $booking['destination_city'],
-                                        ) ?></div>
-                                        <div class="code"><?= htmlspecialchars(
-                                            $booking['destination_code'],
-                                        ) ?></div>
+
+                                    <div class="booking-status-wrap">
+                                        <span class="past-label">Completed</span>
                                     </div>
-                                </div>
-                                
+                                </header>
+
                                 <div class="booking-details">
                                     <div class="detail-item">
                                         <span class="label">Flight</span>
@@ -250,7 +254,7 @@ unset($_SESSION['errors']);
                                             $booking['flight_number'],
                                         ) ?></span>
                                     </div>
-                                    
+
                                     <div class="detail-item">
                                         <span class="label">Date</span>
                                         <span class="value"><?= date(
@@ -258,53 +262,46 @@ unset($_SESSION['errors']);
                                             strtotime($booking['departure_time']),
                                         ) ?></span>
                                     </div>
-                                    
+
                                     <div class="detail-item">
                                         <span class="label">Passengers</span>
                                         <span class="value"><?= count($tickets) ?></span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="booking-actions">
                                     <a href="../tickets/view.php?booking_id=<?= $booking[
                                         'booking_id'
-                                    ] ?>" 
-                                       class="btn btn-secondary btn-sm">
-                                        View Tickets
-                                    </a>
+                                    ] ?>" class="btn btn-secondary btn-sm">View Tickets</a>
                                 </div>
-                            </div>
+                            </article>
                         <?php endforeach; ?>
                     </div>
                 </section>
             <?php endif; ?>
         </div>
     </main>
-    
-    <?php include '../includes/footer.php'; ?>
-    
+    </div>
+
     <!-- Cancel Booking Modal -->
-    <div id="cancelModal" class="modal" style="display: none;">
-        <div class="modal-content">
+    <div id="cancelModal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" onclick="closeCancelModal()"></div>
+        <div class="modal-panel">
             <h3>Cancel Booking?</h3>
             <p>Are you sure you want to cancel booking <strong id="cancelBookingRef"></strong>?</p>
-            <p style="color: var(--text-secondary);">This action cannot be undone.</p>
-            
+            <p class="muted">This action cannot be undone.</p>
+
             <form id="cancelForm" action="../../app/controllers/BookingCancelController.php" method="POST">
                 <input type="hidden" name="booking_id" id="cancelBookingId">
-                
-                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <button type="button" onclick="closeModal()" class="btn btn-secondary" style="flex: 1;">
-                        Keep Booking
-                    </button>
-                    <button type="submit" class="btn btn-primary" style="flex: 1; background-color: var(--error-color);">
-                        Yes, Cancel
-                    </button>
+
+                <div class="modal-actions">
+                    <button type="button" onclick="closeCancelModal()" class="btn btn-secondary">Keep Booking</button>
+                    <button type="submit" class="btn btn-danger">Yes, Cancel</button>
                 </div>
             </form>
         </div>
     </div>
-    
-    <script src="../assets/js/bookings.js"></script>
+
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

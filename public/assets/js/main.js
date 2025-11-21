@@ -63,3 +63,30 @@ document.addEventListener('DOMContentLoaded', () => {
 function goToBooking() {
     window.location.href = 'booking.php'; // Stub
 }
+
+/* BOOKINGS PAGE */
+// bookings.js — small helpers for cancel modal
+function openCancelModal(bookingId, bookingRef) {
+    const modal = document.getElementById('cancelModal');
+    const refEl = document.getElementById('cancelBookingRef');
+    const idInput = document.getElementById('cancelBookingId');
+
+    if (!modal) return;
+    refEl.textContent = bookingRef;
+    idInput.value = bookingId;
+
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCancelModal() {
+    const modal = document.getElementById('cancelModal');
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+// close on ESC
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeCancelModal();
+});

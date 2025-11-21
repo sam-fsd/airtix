@@ -262,9 +262,6 @@ class User
     public function delete($id)
     {
         try {
-            // Note: In production, you might want soft delete instead
-            // (adding a deleted_at column instead of actually deleting)
-
             $sql = 'DELETE FROM users WHERE user_id = ?';
             $stmt = $this->db->query($sql, [$id]);
 

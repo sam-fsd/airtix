@@ -1,13 +1,12 @@
-
 <?php
 /**
  * ============================================================
- * LOGOUT CONTROLLER (app/controllers/LogoutController.php)
+ * LOGOUT CONTROLLER
  * ============================================================
  */
 
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../app/helpers/functions.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../helpers/functions.php';
 
 session_start();
 
@@ -21,6 +20,4 @@ $_SESSION['success'] = 'You have been logged out successfully.';
 
 // Redirect to login
 redirect('public/login.php');
-
-
 ?>

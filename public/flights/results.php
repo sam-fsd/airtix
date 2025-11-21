@@ -1,12 +1,14 @@
 <?php
 /**
  * SEARCH RESULTS VIEW
- * public/flights/results.php
  */
 
 require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../app/helpers/functions.php';
 
 session_start();
+
+requireLogin();
 
 // Ensure search results exist
 if (!isset($_SESSION['search_results'])) {
@@ -40,7 +42,7 @@ unset($_SESSION['success'], $_SESSION['errors']);
 </head>
 <body>
 
-<?php include_once __DIR__ . '/../dashboard/_sidebar.php'; ?>
+<?php include_once __DIR__ . '/../includes/_sidebar.php'; ?>
 
 <div class="content">
     <main class="results-page">

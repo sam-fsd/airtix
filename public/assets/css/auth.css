@@ -1,0 +1,327 @@
+/* ============================================================
+   AUTH LAYOUT — AirTix TRUE THEME
+   ============================================================ */
+
+:root {
+    --primary: #005d5d;
+    --accent: #018b8b;
+    --light: #f5f6fa;
+    --text: #333;
+    --text-muted: #555;
+    --border: #d7d9df;
+}
+
+.auth-page {
+    background: var(--light);
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* ============================================================
+   LEFT SIDE (Branding)
+   ============================================================ */
+
+.auth-branding {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.branding-content {
+    max-width: 380px;
+}
+
+.brand-logo {
+    font-size: 2.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.auth-branding h2 {
+    font-size: 1.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.auth-branding p {
+    margin-top: 0.5rem;
+    color: #e6ffff;
+}
+
+.features-list {
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    background: rgba(255, 255, 255, 0.25);
+    height: 24px;
+    width: 24px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================================
+   RIGHT SIDE (Form Area)
+   ============================================================ */
+
+.auth-form-container {
+    flex: 1;
+    background: #fff;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form-wrapper {
+    max-width: 420px;
+    width: 100%;
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.form-subtitle {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   Alerts
+   ============================================================ */
+
+.alert {
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alert-error {
+    background: #ffe5e5;
+    border-left: 4px solid #cc0000;
+    color: #990000;
+}
+
+.alert-success {
+    background: #e5fff3;
+    border-left: 4px solid #009966;
+    color: #006644;
+}
+
+/* ============================================================
+   Inputs
+   ============================================================ */
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.form-input {
+    width: 100%;
+    background: var(--light);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(1, 139, 139, 0.25);
+}
+
+/* ============================================================
+   Options Row
+   ============================================================ */
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text);
+}
+
+.link-text,
+.link-primary {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.link-text:hover,
+.link-primary:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   Form Footer
+   ============================================================ */
+
+.form-footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-footer p {
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   Demo Credentials Box
+   ============================================================ */
+
+.demo-credentials {
+    margin-top: 1.8rem;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.demo-title {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+}
+
+.demo-account {
+    margin-bottom: 0.4rem;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 900px) {
+    .auth-branding {
+        display: none;
+    }
+}
+
+/* ============================================================
+   REGISTRATION PAGE — AirTix (Namespaced, No Conflicts)
+   ============================================================ */
+
+.register-page .auth-form-wrapper .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.register-page .form-row .form-group {
+    flex: 1;
+}
+
+.register-page .form-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Make checkbox alignment consistent */
+.register-page .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+}
+
+.register-page .checkbox-label input[type='checkbox'] {
+    accent-color: var(--primary);
+}
+
+.register-page .auth-form-wrapper .form-footer p {
+    color: var(--text-muted);
+}
+
+/* Error list inside registration */
+.register-page .alert ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+}
+
+.register-page .alert ul li {
+    margin-bottom: 0.3rem;
+}
+
+/* Harmonize spacing with the login page */
+.register-page .auth-form-wrapper {
+    padding-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .register-page .auth-form-wrapper .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

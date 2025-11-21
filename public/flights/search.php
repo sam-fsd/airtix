@@ -5,8 +5,11 @@
 
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../app/models/Flight.php';
+require_once __DIR__ . '/../../app/helpers/functions.php';
 
 session_start();
+
+requireLogin();
 
 // Get all destinations for dropdown
 $db = Database::getInstance();
@@ -39,7 +42,7 @@ unset($_SESSION['old_input']);
   <link rel="stylesheet" href="<?= rtrim(BASE_URL, '/') ?>/public/assets/css/flights.css">
 </head>
 <body>
-  <?php include_once __DIR__ . '/../dashboard/_sidebar.php'; ?>
+  <?php include_once __DIR__ . '/../includes/_sidebar.php'; ?>
 
   <div class="content">
     <main class="search-page">

@@ -1,8 +1,11 @@
 <?php
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../app/models/Flight.php';
+require_once __DIR__ . '/../../app/helpers/functions.php';
 
 session_start();
+
+requireLogin();
 
 $flightId = $_GET['id'] ?? null;
 if (!$flightId) {

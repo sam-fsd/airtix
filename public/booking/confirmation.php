@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../app/helpers/functions.php';
 
 session_start();
 
-// requireLogin();
+requireLogin();
 
 // Check if booking was successful
 if (!isset($_SESSION['booking_success'])) {
@@ -21,6 +21,11 @@ unset($_SESSION['booking_success']);
 // Get full booking details
 $bookingModel = new Booking();
 $booking = $bookingModel->findById($bookingData['booking_id']);
+
+if (!$booking) {
+    $_SESSION['errors'] = ['Booking not found'];
+    redirect('public/flights/search.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,17 +103,16 @@ $booking = $bookingModel->findById($bookingData['booking_id']);
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-            <a href="../tickets/view.php?booking_id=<?= $booking[
-                'booking_id'
-            ] ?>" class="btn btn-primary btn-large">
-                View Tickets
+            <a href="../tickets/view.php?booking_id=<?= $booking['booking_id'] ?>" 
+                   class="btn btn-primary btn-large">
+                    View Tickets
             </a>
 
-            <a href="../user/my-bookings.php" class="btn btn-secondary">
+            <a href="../dashboard/my-bookings.php" class="btn btn-secondary">
                 View All Bookings
             </a>
 
-            <a href="../flights/index.php" class="btn btn-secondary">
+            <a href="../flights/search.php" class="btn btn-secondary">
                 Book Another Flight
             </a>
         </div>
@@ -117,7 +121,5 @@ $booking = $bookingModel->findById($bookingData['booking_id']);
 
 </main>
 </div>
-
-    
 </body>
 </html>

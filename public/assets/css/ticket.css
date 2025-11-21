@@ -1,0 +1,264 @@
+/* ============================================================
+   TICKET PAGE LAYOUT
+   ============================================================ */
+
+:root {
+    --ticket-bg: #ffffff;
+    --ticket-border: var(--border-color);
+    --ticket-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* Page Container */
+.ticket-page .page-container {
+    max-width: 920px;
+    margin: 2rem auto;
+}
+
+/* Actions: Back + Print */
+.ticket-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Ticket Outer Container */
+.ticket-container {
+    background: var(--ticket-bg);
+    border: 1px solid var(--ticket-border);
+    border-radius: var(--radius-lg, 12px);
+    padding: 0;
+    box-shadow: 0 4px 12px var(--ticket-shadow);
+    overflow: hidden;
+}
+
+/* Ticket Structure */
+.ticket {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+/* ------------------------------------------------------------
+   Header
+------------------------------------------------------------ */
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.2rem;
+}
+
+.ticket-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.ticket-number {
+    font-size: 1rem;
+    background: var(--bg-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------
+   Ticket Body
+------------------------------------------------------------ */
+.ticket-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+/* Info Label + Value */
+.info-label {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+}
+
+.info-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ------------------------------------------------------------
+   Passenger Section
+------------------------------------------------------------ */
+.passenger-info {
+    margin-bottom: 0.5rem;
+}
+
+/* ------------------------------------------------------------
+   Flight Info (simple two-column flex)
+------------------------------------------------------------ */
+.flight-info {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   Route Display (Origin → Plane → Destination)
+------------------------------------------------------------ */
+.route-display {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.route-point {
+    text-align: center;
+}
+
+.route-point .city {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.route-point .code {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.route-point .time {
+    margin-top: 0.35rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.route-point .airport {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.2rem;
+}
+
+/* Plane Separator */
+.route-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plane-icon {
+    font-size: 1.8rem;
+    transform: rotate(15deg);
+    color: var(--primary-color);
+}
+
+/* ------------------------------------------------------------
+   Additional Info Grid
+------------------------------------------------------------ */
+.additional-info .info-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------
+   Barcode Section
+------------------------------------------------------------ */
+.barcode-section {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.barcode {
+    margin: 0 auto 0.5rem auto;
+}
+
+.barcode-text {
+    font-size: 0.9rem;
+    font-family: monospace;
+    color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------
+   Ticket Footer
+------------------------------------------------------------ */
+.ticket-footer {
+    margin-top: 2.25rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.ticket-footer p {
+    margin: 0.35rem 0;
+}
+
+/* ------------------------------------------------------------
+   PRINT MODE
+------------------------------------------------------------ */
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .ticket-actions {
+        display: none !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .ticket-container {
+        box-shadow: none !important;
+        page-break-after: always;
+        border: 1px solid #000 !important;
+    }
+
+    .ticket-container:last-of-type {
+        page-break-after: auto;
+    }
+}
+
+/* ------------------------------------------------------------
+   Mobile Responsiveness
+------------------------------------------------------------ */
+@media (max-width: 720px) {
+    .flight-info {
+        gap: 1.5rem;
+    }
+
+    .route-display {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .additional-info .info-grid {
+        gap: 1.5rem;
+    }
+
+    .ticket {
+        padding: 1.5rem;
+    }
+
+    .ticket-header {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
