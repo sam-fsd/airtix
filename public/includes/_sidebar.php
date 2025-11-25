@@ -1,16 +1,8 @@
  <!-- Sidebar -->
-    <?php // Get current page path
-// Get current page path
-// Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    // Get current page path
-    $currentPage = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
+    <?php
+    require_once __DIR__ . '/../../app/helpers/functions.php';
+    $currentPage = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    ?>
 
 <aside class="sidebar">
     <div class="logo">
@@ -41,6 +33,6 @@
     </nav>
 
     <div class="sidebar-footer">
-        <button class="user-icon">👤 <a href="<?= BASE_URL ?>/app/controller/LogoutController"></a> Logout</button>
+        <button class="user-icon">👤 <a href="<?= BASE_URL ?>/app/controllers/LogoutController.php" style="color: red;">Logout</a> </button>
     </div>
 </aside>

@@ -42,6 +42,7 @@ unset($_SESSION['errors']);
     <title>My Bookings - AirTix</title>
 
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/booking.css">
 </head>
 <body>
