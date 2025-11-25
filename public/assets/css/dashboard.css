@@ -114,17 +114,108 @@ body {
     min-height: 150px;
 }
 
-.weather {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
+.greeting h1 {
+    font-size: 3rem;
+    color: white;
+    font-weight: 700;
 }
 
-.weather-temp span {
-    font-size: 1.5rem;
-    font-weight: bold;
+.weather-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    min-width: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.weather-condition {
+    font-size: 1rem;
+    color: white;
+    font-weight: 500;
+}
+
+.weather-location {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-day {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.weather-visual {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.weather-icon {
+    position: relative;
+    width: 80px;
+    height: 60px;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 3rem;
+    top: 0;
+    left: 0;
+}
+
+.sun {
+    position: absolute;
+    font-size: 2.5rem;
+    top: -10px;
+    right: 0;
+    animation: rotate 20s linear infinite;
+}
+
+.airplane {
+    position: absolute;
+    font-size: 2rem;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+}
+
+.weather-temp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temp-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.temp-small {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .upcoming-flight {

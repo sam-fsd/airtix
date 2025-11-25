@@ -1,0 +1,351 @@
+/* Use your existing theme */
+:root {
+    --primary: #005d5d;
+    --accent: #018b8b;
+    --light: #f5f6fa;
+    --text: #333;
+
+    --primary-blue: #1e6b8c;
+    --light-blue: #5ca9d4;
+    --accent-green: #c5f467;
+    --dark-teal: #1a4d5c;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --bg-white: #ffffff;
+    --bg-gray: #f8fafc;
+    --border-color: #e2e8f0;
+}
+
+/* HEADER SECTION */
+.dashboard-header-hero {
+    background: url('../images/plane-clouds.png') center/cover no-repeat;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    min-height: 180px;
+}
+
+/* Left greeting */
+.hero-left h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Weather Card (same visuals, cleaner container) */
+.hero-weather {
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+    padding: 1.2rem 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* WEATHER CARD */
+.weather-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 2rem;
+    min-width: 320px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.weather-condition {
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.weather-location {
+    font-size: 0.875rem;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-day {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* WEATHER ICONS */
+.weather-visual {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.weather-icon {
+    position: relative;
+    width: 70px;
+    height: 50px;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 0;
+    left: 0;
+}
+
+.sun {
+    position: absolute;
+    font-size: 2rem;
+    top: -8px;
+    right: 0;
+    animation: rotate 20s linear infinite;
+}
+
+.airplane {
+    position: absolute;
+    font-size: 1.6rem;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+}
+
+.temp-large {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.temp-small {
+    font-size: 0.875rem;
+    color: var(--text);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* UPCOMING FLIGHT */
+.upcoming-flight-section {
+    margin: 2rem;
+}
+
+.section-badge {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.upcoming-flight-card {
+    background-color: var(--primary);
+    border-radius: 15px;
+    padding: 1.8rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    color: white;
+}
+
+.flight-icon {
+    font-size: 2rem;
+    background: white;
+    color: var(--primary);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flight-route h2 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.flight-details {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+/* BUTTON */
+.btn-change {
+    background-color: white;
+    color: var(--primary);
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-change:hover {
+    transform: translateY(-2px);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Recent Flights Section */
+.recent-flights-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recent-flights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.recent-flight-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-gray);
+    border-radius: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.recent-flight-item:hover {
+    transform: translateX(5px);
+    background-color: #e8f4f8;
+}
+
+.flight-icon-small {
+    font-size: 1.5rem;
+}
+
+.flight-route-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.flight-route-info strong {
+    color: var(--text-dark);
+}
+
+.flight-date {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.btn-view-more {
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    background-color: var(--dark-teal);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-view-more:hover {
+    background-color: var(--primary);
+}
+
+/* DESTINATION FACTS */
+.destination-facts-section {
+    background-color: var(--primary);
+    border-radius: 15px;
+    padding: 2rem;
+    color: white;
+}
+
+.destination-image {
+    height: 240px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+.destination-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Empty States */
+.empty-state,
+.empty-destination {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-light);
+}
+
+.empty-destination {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    background-color: var(--accent-green);
+    color: var(--dark-teal);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+/* RESPONSIVE TWEAKS */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .upcoming-flight-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
